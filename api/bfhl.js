@@ -34,9 +34,9 @@ export default function handler(req, res) {
 
       res.status(200).json({
         status: "success",
-        user_id: "SumitGupta_3923",
-        email: "sumitgupta@example.com",
-        roll_number: "22BCE3923",
+        user_id: "john_doe_17091999",
+        email: "john@xyz.com",
+        roll_number: "ABCD123",
         even_numbers: evenNumbers,
         odd_numbers: oddNumbers,
         alphabets: alphabets,

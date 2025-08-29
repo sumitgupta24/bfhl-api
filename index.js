@@ -6,9 +6,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const FULL_NAME = (process.env.FULL_NAME || 'sumit_gupta').toLowerCase();
-const DOB = process.env.DOB_DDMMYYYY || '01012000';
-const EMAIL = process.env.EMAIL || 'sumit@example.com';
+const FULL_NAME = (process.env.FULL_NAME || 'john_doe').toLowerCase();
+const DOB = process.env.DOB_DDMMYYYY || '17091999';
+const EMAIL = process.env.EMAIL || 'john@xyz.com';
 const ROLL = process.env.ROLL_NUMBER || 'ABCD123';
 
 app.get('/', (req, res) => res.send('BFHL API is running'));
