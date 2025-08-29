@@ -88,7 +88,4 @@ app.post('/bfhl', (req, res) => {
     });
   }
 });
-
-// ❌ REMOVE app.listen
-// ✅ Instead export app for Vercel
 module.exports = app;
