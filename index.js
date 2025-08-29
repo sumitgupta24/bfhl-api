@@ -1,4 +1,3 @@
-// index.js
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
@@ -24,7 +23,8 @@ app.post('/bfhl', (req, res) => {
         user_id: `${FULL_NAME}_${DOB}`,
         email: EMAIL,
         roll_number: ROLL,
-        message: 'Request body must be JSON with a "data" array. Example: { "data": ["a","1","$"] }'
+        message:
+          'Request body must be JSON with a "data" array. Example: { "data": ["a","1","$"] }',
       });
     }
 
@@ -33,11 +33,10 @@ app.post('/bfhl', (req, res) => {
     const alphabets = [];
     const special_characters = [];
     let sum = 0;
-
     const lettersForConcat = [];
 
     data.forEach((rawItem) => {
-      const token = (rawItem === null || rawItem === undefined) ? '' : String(rawItem);
+      const token = rawItem == null ? '' : String(rawItem);
 
       if (/^-?\d+$/.test(token)) {
         const num = Number(token);
@@ -57,6 +56,7 @@ app.post('/bfhl', (req, res) => {
         }
         return;
       }
+
       special_characters.push(token);
     });
 
@@ -74,8 +74,8 @@ app.post('/bfhl', (req, res) => {
       even_numbers,
       alphabets,
       special_characters,
-      sum: String(sum),  
-      concat_string
+      sum: String(sum),
+      concat_string,
     });
   } catch (err) {
     console.error('Unhandled error in /bfhl:', err);
@@ -84,13 +84,11 @@ app.post('/bfhl', (req, res) => {
       user_id: `${FULL_NAME}_${DOB}`,
       email: EMAIL,
       roll_number: ROLL,
-      message: 'Internal server error'
+      message: 'Internal server error',
     });
   }
 });
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// ❌ REMOVE app.listen
+// ✅ Instead export app for Vercel
+module.exports = app;
